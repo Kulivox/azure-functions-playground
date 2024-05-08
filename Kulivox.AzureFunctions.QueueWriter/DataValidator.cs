@@ -23,8 +23,7 @@ public class DataValidator
     };
 
     [Function(nameof(DataValidator))]
-    [ServiceBusOutput(Constants.ValidatedDataQueueName, Connection = Constants.ServiceBusWriter)]
-    public SensorData? Run([ServiceBusTrigger(Constants.RawDataQueueName, Connection = Constants.ServiceBusReader)] ServiceBusReceivedMessage message)
+    public DataValidatorOutput? Run([ServiceBusTrigger(Constants.RawDataQueueName, Connection = Constants.ServiceBusReader)] ServiceBusReceivedMessage message)
     {
         _logger.LogInformation("Processing message ID: {id}", message.MessageId);
        
@@ -52,6 +51,10 @@ public class DataValidator
         
         // Enqueue the validated data
         _logger.LogInformation("Enqueued validated sensor data from sensor: {id}", sensorData.DeviceId);
-        return sensorData;
+        return new DataValidatorOutput()
+        {
+            AnomalyDetectionEvent = sensorData,
+            DataSaverEvent = sensorData
+        };
     }
 }

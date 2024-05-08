@@ -16,9 +16,7 @@ public class ValidDataSaver
     {
         _logger = logger;
     }
-
-  
-
+    
     [Function(nameof(ValidDataSaver))]
     public ValidDataSaverOutput Run([ServiceBusTrigger(Constants.ValidatedDataQueueName, Connection = Constants.ServiceBusReader)] ServiceBusReceivedMessage message)
     {
@@ -33,7 +31,6 @@ public class ValidDataSaver
                 Temperature = sensorData.Temperature,
                 Timestamp = sensorData.Timestamp
             },
-            OutputEvent = sensorData
         };
     }
 }
