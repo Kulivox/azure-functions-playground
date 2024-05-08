@@ -18,7 +18,7 @@ public class AnomalyDetector
 
     private static EmailClient GetEmailClient()
     {
-        var connectionString = Environment.GetEnvironmentVariable("COMMUNICATION_SERVICES_CONNECTION_STRING");
+        var connectionString = Environment.GetEnvironmentVariable("AlertMailerConnectionString");
         return new EmailClient(connectionString);
     }
 
