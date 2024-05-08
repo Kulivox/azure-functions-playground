@@ -7,7 +7,7 @@ public class ValidDataSaverOutput
 {
    
     
-    [SqlOutput("dbo.ToDo", connectionStringSetting: Constants.AzureSqlConnectionString)]
+    [SqlOutput(Constants.SensorDataTableName, connectionStringSetting: Constants.AzureSqlConnectionString)]
     public required SensorDataDbRecord DbRecord { get; init; }
     
 }

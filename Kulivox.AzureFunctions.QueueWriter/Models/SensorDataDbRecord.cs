@@ -2,8 +2,6 @@
 
 public class SensorDataDbRecord
 {
-    public required Guid Id { get; set; }
-
     public required string SensorId { get; set; }
     
     public required DateTimeOffset Timestamp { get; set; }

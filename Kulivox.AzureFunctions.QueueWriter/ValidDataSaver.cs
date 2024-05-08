@@ -26,7 +26,6 @@ public class ValidDataSaver
         {
             DbRecord = new SensorDataDbRecord()
             {
-                Id = Guid.NewGuid(),
                 SensorId = sensorData.DeviceId,
                 Temperature = sensorData.Temperature,
                 Timestamp = sensorData.Timestamp

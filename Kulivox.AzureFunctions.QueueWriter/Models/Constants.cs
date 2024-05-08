@@ -9,6 +9,9 @@ public class Constants
     // DB Connection strings
     public const string AzureSqlConnectionString = "AzureSqlConnectionString";
     
+    // DB Table names
+    public const string SensorDataTableName = "dbo.SensorData";
+    
     // Queue names
     public const string RawDataQueueName = "raw-sensor-data";
     public const string ValidatedDataQueueName = "validated-sensor-data";

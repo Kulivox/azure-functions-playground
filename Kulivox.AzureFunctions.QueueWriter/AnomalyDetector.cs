@@ -10,6 +10,9 @@ namespace Kulivox.AzureFunctions.QueueWriter;
 
 public class AnomalyDetector
 {
+    private const string SenderAddress = "DoNotReply@4de3b0f0-7101-4a61-a9e2-650f7660de55.azurecomm.net";
+    private const string RecipientAddress = "mich.klinka@gmail.com";
+    
     private readonly ILogger<AnomalyDetector> _logger;
     private readonly Lazy<EmailClient> _emailClient = new(GetEmailClient);
 
@@ -24,12 +27,12 @@ public class AnomalyDetector
     {
         _logger = logger;
     }
-
+    
     private Task SendHighTemperatureAlert(SensorData sensorData)
     {
         var message = new EmailMessage(
-            "asd",
-            "asd",
+            SenderAddress,
+            RecipientAddress,
             new EmailContent("High temperature alert")
             {
                 PlainText = $"High temperature detected: {sensorData.Temperature} from sensor {sensorData.DeviceId}"
