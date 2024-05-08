@@ -5,7 +5,7 @@ namespace Kulivox.AzureFunctions.QueueWriter.Models;
 
 public class IngestOutput
 {
-    [ServiceBusOutput("raw-sensor-data", Connection = "ServiceBusConnection")]
+    [ServiceBusOutput(Constants.RawDataQueueName, Connection = Constants.ServiceBusWriter)]
     public required SensorData OutputEvent { get; init; }
     public required HttpResponseData HttpResponse { get; init; }
 }
